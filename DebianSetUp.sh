@@ -1,48 +1,41 @@
 # DEBIAN INSTALLATION SETUP
 
-#update debian itself
+# TODO: Falta configurar las teclas del teclado para subir y bajar el brillo de la pantalla
+# TODO: Falta configurar las teclas del teclado para subir y bajar el volumen
+# TODO: Agregar la confuracion de alacritty que esta en .config/alacritty
+# TODO: Agregar el Theme de AwesomeWM
+# TODO: Agregar que aparezco la bateria en la estatus bar de AwesomeWM
+# TODO: Agregar a los archivos toda la carpeta ~/.config/awesome/
 
+#update debian itself
+sudo apt-get update
+
+# ------------------------ Utils ------------------------------
 # Git
 sudo apt-get install git
+sudo apt-get install pulseaudio # Sin esto no se pueden configurar las teclas para subir y bajar el volumen
 
-# awesome
-sudo apt-get install awesome picom nitrogen
+# Virtual Machine
+apt-get install qemu-user-static
+
+# ------------------------ WM --------------------------------
+sh ./scripts/wm.sh
 
 # --------------------- CODING -------------------------------------------
-# Vscode
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
-sudo apt-add-repository 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main'
-sudo apt update
-sudo apt install codium # codium-insiders
+sh ./scripts/coding.sh
 
-# Clang
-sudo apt-get install clang
-
-# Julia
-
-
-# --------------------- GAME DEV -------------------------------------------
-# raylib
-sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
-
-# Pixelorama
-cd Downloads
-wget https://github.com/Orama-Interactive/Pixelorama/releases/latest/download/Pixelorama.Linux-64bit.tar.gz
-tar -xvzf Pixelorama.Linux-64bit.tar.gz
+# --------------------  GAMING  ------------------------------------------
+sh ./scripts/gamedev.sh
 
 # -------------------- You Tube ---------------------------------------------
 # obs
-sudo apt install obs-studio
+sudo apt-get install obs-studio
 
 # -------------------- STUDY -------------------------------------------------
-# Anki
+sh ./scripts/study.sh
 
+# -------------------- DIRECTORIES ---------------------------------------------
+sh ./scripts/directories.sh
 
-# Crear el directorio de documentos
-
-
-# Mejora de la terminal
-# Oh my zsh
-sudo apt install zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-sudo apt install terminator
+# -------------------- Terminal ------------------------------------
+sh ./scripts/terminal.sh
